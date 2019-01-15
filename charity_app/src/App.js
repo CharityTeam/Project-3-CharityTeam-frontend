@@ -121,11 +121,14 @@ class App extends Component {
 
   renderTiles(allCases) {
     
-    return allCases.map((oneCase) => {
+    return allCases.map((oneCase, index) => {
       return (
+       
         <Tile key={oneCase.id}
           case={oneCase}
-          setCurrentCase={this.setCurrentCase.bind(this)}/>
+          setCurrentCase={this.setCurrentCase.bind(this)}
+          progressBar={this.progressBar.bind(this)}/>
+          
       )
     })
   }
@@ -134,6 +137,16 @@ class App extends Component {
     this.setState({
       modal: !this.state.modal
     })
+  }
+
+  progressBar(total, sum){
+    const colorBackground = `${(sum / total) * 100}%`
+    return{
+      backgroundColor: 'green',
+      width: colorBackground,
+      height: '1.5vh',
+    borderRadius: '5px'
+    }
   }
 
   render() {
