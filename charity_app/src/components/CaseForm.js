@@ -33,6 +33,7 @@ class CaseForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        console.log("handiling submit" , this.state)
         this.props.handleSubmit(this.state)
     }
 
@@ -46,7 +47,7 @@ class CaseForm extends Component {
                     <label>city:</label><input type="text" value={this.state.city} name="city" onChange={this.handleChange.bind(this)} /><br />
                     <label>email:</label><input type="text" value={this.state.email} name="email" onChange={this.handleChange.bind(this)} /><br />
                     <label>phone:</label><input type="text" value={this.state.phone} name="phone" onChange={this.handleChange.bind(this)} /><br />
-                    <label>organtion_name:</label><input type="text" value={this.state.organtion_name} name="organization_name" onChange={this.handleChange.bind(this)} /><br />
+                    <label>organtion_name:</label><input type="text" value={this.state.organtion_name} name="organtion_name" onChange={this.handleChange.bind(this)} /><br />
                     <label>needed:</label><input type="text" value={this.state.needed} name="needed" onChange={this.handleChange.bind(this)} /><br />
                     <label>img:</label><input type="text" value={this.state.img} name="img" onChange={this.handleChange.bind(this)} /><br />
                     <button>Submit</button>
