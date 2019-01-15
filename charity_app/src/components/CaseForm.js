@@ -13,6 +13,7 @@ class CaseForm extends Component {
             needed: props.activeCase ? props.activeCase.needed : '',
             img: props.activeCase ? props.activeCase.img : '',
             sum: props.activeCase ? props.activeCase.sum : '',
+            id: props.activeCase ? props.activeCase.id : null
         }
     }
 
@@ -39,7 +40,7 @@ class CaseForm extends Component {
         return (
             <div className='modal'>
                 <form className='show-form' onSubmit={this.handleSubmit.bind(this)}>
-                    {/* <div className='close-modal' onClick={() => { this.props.toggleModal() }}>delete</div> */}
+                    <div className='close-modal' onClick={() => { this.props.toggleModal() }}>X</div>
                     <label>name:</label><input type="text" value={this.state.name} name="name" onChange={this.handleChange.bind(this)} /><br />
                     <label>details</label><input type="text" value={this.state.details} name="details" onChange={this.handleChange.bind(this)} /><br />
                     <label>city:</label><input type="text" value={this.state.city} name="city" onChange={this.handleChange.bind(this)} /><br />
@@ -48,7 +49,7 @@ class CaseForm extends Component {
                     <label>organtion_name:</label><input type="text" value={this.state.organtion_name} name="organization_name" onChange={this.handleChange.bind(this)} /><br />
                     <label>needed:</label><input type="text" value={this.state.needed} name="needed" onChange={this.handleChange.bind(this)} /><br />
                     <label>img:</label><input type="text" value={this.state.img} name="img" onChange={this.handleChange.bind(this)} /><br />
-                    <label>sum:</label><input type="text" value={this.state.sum} name="sum" onChange={this.handleChange.bind(this)} /><br />
+                    <button>Submit</button>
                 </form>
 
 

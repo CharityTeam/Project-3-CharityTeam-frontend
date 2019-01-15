@@ -72,12 +72,12 @@ class App extends Component {
       })
       console.log('current state: ', this.state.cases);
       console.log('new state: ', updatedcases)
-
+      
       this.setState({
         cases: updatedcases,
         activecase: oneCase,
         modal: false
-      })
+      }, function(){console.log(this.state.activeCase)})
     })
     .catch(error => {
       console.log(error);
@@ -105,7 +105,7 @@ class App extends Component {
 
   handleSubmit(oneCase) {
     if(this.state.activeCase) {
-      this.updatedcases(oneCase)
+      this.updateCase(oneCase)
     } else {
       this.createNewCase(oneCase)
     }
