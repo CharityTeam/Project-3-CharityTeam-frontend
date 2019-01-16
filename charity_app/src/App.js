@@ -43,6 +43,7 @@ class App extends Component {
        console.log('DATA')
        console.log(data);
        data.sum = data.donation.doner_donation;
+       data.numberofdonors = 0;
        const updatedcases = this.state.cases.concat([data]);
        console.log(updatedcases)
        this.setState({
