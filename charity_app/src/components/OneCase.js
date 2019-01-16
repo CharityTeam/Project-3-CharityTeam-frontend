@@ -7,7 +7,7 @@ const OneCase = (props) => {
                 onClick={() => {
                     props.setCurrentCase(null);
                 }}> Back </div>
-            <div className="container">
+            <div className="container1">
                 <div className="image">
                     <img src={props.activeCase.img} alt="" />
                 </div>
