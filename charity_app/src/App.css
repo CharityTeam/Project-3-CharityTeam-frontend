@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ img{
   flex-direction: row;
   flex-wrap: wrap;
 } */
-
+/* 
 .tile {
   display: flex;
   align-items: center;
@@ -51,4 +51,13 @@ text-align: center;
     height: 5px;
     border-radius: 5px;
   }
-
+  image{
+    width: 30px;
+    height: 60px;
+    border: 1px solid black;
+  }
+  container{
+    display: flex; 
+    background-color: aqua;
+  }
+   */ 
