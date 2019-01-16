@@ -161,6 +161,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <div className="nav">
+      <img src="http://www.accessrecordsmanagement.co.uk/wp-content/uploads/2016/11/Records-Management-Website-Headers-17.jpg" alt="" srcset=""/>
+      </div>
       <header>My Cases</header>     
       {this.state.activeCase ?  <OneCase 
          setCurrentCase={this.setCurrentCase.bind(this)} 
@@ -172,7 +175,9 @@ class App extends Component {
           <div className="action-buttons">
             <div onClick={this.toggleModal.bind(this)}>+</div>
           </div>
+          <div className="tiles">
           {this.renderTiles(this.state.cases)}
+          </div>
         </div>}
 
       {this.state.modal ? 
