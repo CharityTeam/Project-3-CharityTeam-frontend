@@ -59,7 +59,7 @@ class App extends Component {
 
   updateCase(caseOne) {
   
-    const url = `http://localhost:3000/cases/${caseOne.id}`
+    const url = API_URL + `/cases/${caseOne.id}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -96,7 +96,7 @@ class App extends Component {
 
   
   deleteCase(id) {
-    const url = `http://localhost:3000/cases/${id}`;
+    const url = API_URL + `/cases/${id}`;
     fetch(url, {
         method: 'DELETE'
       })
