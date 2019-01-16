@@ -42,6 +42,7 @@ class App extends Component {
      .then(data => {
        console.log('DATA')
        console.log(data);
+       data.sum = data.donation.doner_donation;
        const updatedcases = this.state.cases.concat([data]);
        console.log(updatedcases)
        this.setState({
@@ -67,7 +68,7 @@ class App extends Component {
     })
     .then(response => response.json())
     .then(data => {
-
+      data.sum = data.donation.sumdonation;
       const updatedcases = this.state.cases.map(el => {
         // if(el.id === data.id ){
         //  return el.sum ? el : el.sum = caseOne.sum;
