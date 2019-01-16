@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Button } from 'react-bootstrap';
 const OneCase = (props) => {
     return (
         <div>
@@ -23,8 +23,10 @@ const OneCase = (props) => {
                 <h2>Total Donation: {props.activeCase.sum}</h2>
 
                 <div className="buttons">
+                <Button bsStyle="primary">Primary</Button>
                     <button onClick={() => { props.toggleModal() }}>Edit</button>
                     <button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</button>
+                    <Button bsStyle="primary">Primary</Button>
                 </div>
             </div>
         </div>

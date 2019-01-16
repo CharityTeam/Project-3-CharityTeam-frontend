@@ -3,7 +3,7 @@ import './App.css';
 import Tile from './components/Tiles';
 import OneCase from './components/OneCase';
 import CaseForm from './components/CaseForm';
-
+import { Button, Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 const API_URL = 'http://localhost:3000';
 
 class App extends Component {
@@ -160,7 +160,45 @@ class App extends Component {
 
   render() {
     return (
+
+      
       <div className="App">
+      <Navbar inverse collapseOnSelect>
+  <Navbar.Header>
+    <Navbar.Brand>
+      <a href="#brand">React-Bootstrap</a>
+    </Navbar.Brand>
+    <Navbar.Toggle />
+  </Navbar.Header>
+  <Navbar.Collapse>
+    <Nav>
+      <NavItem eventKey={1} href="#">
+        Link
+      </NavItem>
+      <NavItem eventKey={2} href="#">
+        Link
+      </NavItem>
+      <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+        <MenuItem eventKey={3.1}>Action</MenuItem>
+        <MenuItem eventKey={3.2}>Another action</MenuItem>
+        <MenuItem eventKey={3.3}>Something else here</MenuItem>
+        <MenuItem divider />
+        <MenuItem eventKey={3.3}>Separated link</MenuItem>
+      </NavDropdown>
+    </Nav>
+    <Nav pullRight>
+      <NavItem eventKey={1} href="#">
+        Link Right
+      </NavItem>
+      <NavItem eventKey={2} href="#">
+        Link Right
+      </NavItem>
+    </Nav>
+  </Navbar.Collapse>
+</Navbar>;
+
+
+
       <header>My Cases</header>     
       {this.state.activeCase ?  <OneCase 
          setCurrentCase={this.setCurrentCase.bind(this)} 
@@ -181,7 +219,10 @@ class App extends Component {
           toggleModal={this.toggleModal.bind(this)}
           activeCase={this.state.activeCase}
           /> : ''}
+          {/* <Button bsStyle="primary">Primary</Button> */}
+          
     </div>
+
     );
   }
 }
