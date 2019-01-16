@@ -7,16 +7,16 @@ const OneCase = (props) => {
             onClick={() => {
                 props.setCurrentCase(null);
             }}> Back </div>
-                <div className="container">
+                <div className="container1">
                 <div className="image">
                     <img src={props.activeCase.img} alt=""/>
                 </div>
 
-                <h2>{props.activeCase.name}</h2>
-                <h2>{props.activeCase.details}</h2>
-                <h2>{props.activeCase.sum}</h2>
-                <h2>{props.activeCase.needed}</h2>
-                <h2>{props.activeCase.numberofdonors}</h2>
+                <h2>Name :{props.activeCase.name}</h2>
+                <h2>Details :{props.activeCase.details}</h2>
+                <h2>Money needed: {props.activeCase.needed}</h2>
+                <h2>Total Donation:{props.activeCase.sum}</h2>
+                <h2>Number of Doners {props.activeCase.numberofdonors}</h2>
 
                 <div className="buttons">
                     <button onClick={() => {props.toggleModal() }}>Edit</button>
