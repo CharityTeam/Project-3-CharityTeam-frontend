@@ -43,6 +43,7 @@ class App extends Component {
        console.log('DATA')
        console.log(data);
        data.sum = data.donation.doner_donation;
+       data.numberofdonors = 0;
        const updatedcases = this.state.cases.concat([data]);
        console.log(updatedcases)
        this.setState({
@@ -58,7 +59,7 @@ class App extends Component {
 
   updateCase(caseOne) {
   
-    const url = `http://localhost:3000/cases/${caseOne.id}`
+    const url = API_URL + `/cases/${caseOne.id}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -95,7 +96,7 @@ class App extends Component {
 
   
   deleteCase(id) {
-    const url = `http://localhost:3000/cases/${id}`;
+    const url = API_URL + `/cases/${id}`;
     fetch(url, {
         method: 'DELETE'
       })
@@ -163,43 +164,66 @@ class App extends Component {
 
       
       <div className="App">
-      <Navbar inverse collapseOnSelect>
+     
+{/* <Navbar>
   <Navbar.Header>
     <Navbar.Brand>
-      <a href="#brand">React-Bootstrap</a>
+      <a href="#home">our website name </a>
     </Navbar.Brand>
-    <Navbar.Toggle />
   </Navbar.Header>
-  <Navbar.Collapse>
-    <Nav>
-      <NavItem eventKey={1} href="#">
-        Link
-      </NavItem>
-      <NavItem eventKey={2} href="#">
-        Link
-      </NavItem>
-      <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-        <MenuItem eventKey={3.1}>Action</MenuItem>
-        <MenuItem eventKey={3.2}>Another action</MenuItem>
-        <MenuItem eventKey={3.3}>Something else here</MenuItem>
-        <MenuItem divider />
-        <MenuItem eventKey={3.3}>Separated link</MenuItem>
-      </NavDropdown>
-    </Nav>
-    <Nav pullRight>
-      <NavItem eventKey={1} href="#">
-        Link Right
-      </NavItem>
-      <NavItem eventKey={2} href="#">
-        Link Right
-      </NavItem>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>;
+  <Nav>
+    <NavItem eventKey={1} href="#">
+      About Us 
+    </NavItem>
+    <NavDropdown eventKey={3} title="Organizations" id="basic-nav-dropdown">
+      <MenuItem eventKey={3.1}>Insan</MenuItem>
+      <MenuItem eventKey={3.2}>Bunyan</MenuItem>
+      <MenuItem eventKey={3.3}>Takaful</MenuItem>
+      {/* <MenuItem divider /> */}
+      {/* <MenuItem eventKey={3.4}>Zahra</MenuItem>
+    </NavDropdown>
+    <NavItem eventKey={2} href="#">
+      Contact us 
+    </NavItem> */}
+    
+  {/* </Nav> */}
+{/* </Navbar>; */} 
 
 
 
-      <header>My Cases</header>     
+
+
+      <div className="nav">
+
+<Navbar>
+  <Navbar.Header>
+    <Navbar.Brand>
+      <a href="#home">our website name </a>
+    </Navbar.Brand>
+  </Navbar.Header>
+  <Nav>
+    <NavItem eventKey={1} href="#">
+      About Us 
+    </NavItem>
+    <NavDropdown eventKey={3} title="Organizations" id="basic-nav-dropdown">
+      <MenuItem eventKey={3.1}>Insan</MenuItem>
+      <MenuItem eventKey={3.2}>Bunyan</MenuItem>
+      <MenuItem eventKey={3.3}>Takaful</MenuItem>
+      {/* <MenuItem divider /> */}
+      <MenuItem eventKey={3.4}>Zahra</MenuItem>
+    </NavDropdown>
+    <NavItem eventKey={2} href="#">
+      Contact us 
+    </NavItem>
+    
+  </Nav>
+</Navbar>
+
+
+
+      <img src="http://www.accessrecordsmanagement.co.uk/wp-content/uploads/2016/11/Records-Management-Website-Headers-17.jpg" alt="" srcset=""/>
+      </div>
+      <header>Recent Cases</header>     
       {this.state.activeCase ?  <OneCase 
          setCurrentCase={this.setCurrentCase.bind(this)} 
          activeCase={this.state.activeCase}
@@ -210,7 +234,9 @@ class App extends Component {
           <div className="action-buttons">
             <div onClick={this.toggleModal.bind(this)}>+</div>
           </div>
+          <div className="tiles">
           {this.renderTiles(this.state.cases)}
+          </div>
         </div>}
 
       {this.state.modal ? 
@@ -219,7 +245,8 @@ class App extends Component {
           toggleModal={this.toggleModal.bind(this)}
           activeCase={this.state.activeCase}
           /> : ''}
-          {/* <Button bsStyle="primary">Primary</Button> */}
+          
+        
           
     </div>
 
