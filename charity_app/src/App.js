@@ -55,29 +55,37 @@ class App extends Component {
      })
   }
 
-  updateCase(oneCase) {
-    const url = `http://localhost:3000/cases/${oneCase.id}`
+  updateCase(caseOne) {
+  
+    const url = `http://localhost:3000/cases/${caseOne.id}`
     fetch(url, {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(oneCase)
+      body: JSON.stringify(caseOne)
     })
     .then(response => response.json())
     .then(data => {
 
       const updatedcases = this.state.cases.map(el => {
+        // if(el.id === data.id ){
+        //  return el.sum ? el : el.sum = caseOne.sum;
+        //  }else{
+        //    return data
+        //  }
         return el.id === data.id ? data : el
       })
+
+  
       console.log('current state: ', this.state.cases);
       console.log('new state: ', updatedcases)
       
       this.setState({
         cases: updatedcases,
-        activecase: oneCase,
+        activeCase: caseOne,
         modal: false
-      }, function(){console.log(this.state.activeCase)})
+      })
     })
     .catch(error => {
       console.log(error);
@@ -152,7 +160,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <header>My Cases</header>
+      <header>My Cases</header>     
       {this.state.activeCase ?  <OneCase 
          setCurrentCase={this.setCurrentCase.bind(this)} 
          activeCase={this.state.activeCase}
