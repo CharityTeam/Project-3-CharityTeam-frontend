@@ -43,6 +43,7 @@ class App extends Component {
        console.log('DATA')
        console.log(data);
        data.sum = data.donation.doner_donation;
+       data.numberofdonors = 0;
        const updatedcases = this.state.cases.concat([data]);
        console.log(updatedcases)
        this.setState({
@@ -58,7 +59,7 @@ class App extends Component {
 
   updateCase(caseOne) {
   
-    const url = `http://localhost:3000/cases/${caseOne.id}`
+    const url = API_URL + `/cases/${caseOne.id}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -95,7 +96,7 @@ class App extends Component {
 
   
   deleteCase(id) {
-    const url = `http://localhost:3000/cases/${id}`;
+    const url = API_URL + `/cases/${id}`;
     fetch(url, {
         method: 'DELETE'
       })
