@@ -4,7 +4,7 @@ import Tile from './components/Tiles';
 import OneCase from './components/OneCase';
 import CaseForm from './components/CaseForm';
 import PaypalExpressBtn from "react-paypal-express-checkout";
-
+import {  Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 const API_URL = 'http://localhost:3000';
 
 class App extends Component {
@@ -25,6 +25,8 @@ class App extends Component {
       }
     }
   }
+
+
 
   onChange(e){
     console.log(e.target.value);
@@ -178,6 +180,39 @@ class App extends Component {
     }
   }
 
+  renderHeader() {
+    return(
+      <div className="nav">
+
+          <Navbar>
+            <Navbar.Header>
+              <Navbar.Brand>
+                Takamul
+              </Navbar.Brand>
+            </Navbar.Header>
+            <Nav>
+              <NavItem eventKey={1} href="#">
+                About Us
+    </NavItem>
+              <NavDropdown eventKey={3} title="Organizations" id="basic-nav-dropdown">
+                <MenuItem eventKey={3.1}>Insan</MenuItem>
+                <MenuItem eventKey={3.2}>Bunyan</MenuItem>
+                <MenuItem eventKey={3.3}>Takaful</MenuItem>
+                {/* <MenuItem divider /> */}
+                <MenuItem eventKey={3.4}>Zahra</MenuItem>
+              </NavDropdown>
+              <NavItem eventKey={2} href="#">
+                Contact us
+    </NavItem>
+
+            </Nav>
+          </Navbar>
+          
+    </div>
+    )
+  }
+  
+
   renderContent() {
 
     if (this.state.activeCase) {
@@ -191,9 +226,10 @@ class App extends Component {
     } else {
       return (
         <div className="Cases">
-          <div className="action-buttons">
-            <div onClick={this.toggleModal.bind(this)}>+</div>
-          </div>
+            <div className="action-buttons">
+        <button  className='newCaseBut'onClick={this.toggleModal.bind(this)}>Add New Case</button>
+          {/* <div onClick={this.toggleModal.bind(this)}>Add New Case</div> */}
+        </div>
           <div className="tiles">
             {this.renderTiles(this.state.cases)}
           </div>
@@ -230,11 +266,15 @@ class App extends Component {
 
   render() {
     return (
+    
       <div className="App">
-        <div className="nav">
-          <img src="http://www.accessrecordsmanagement.co.uk/wp-content/uploads/2016/11/Records-Management-Website-Headers-17.jpg" alt="" />
-        </div>
-        <header>My Cases</header>
+       {this.renderHeader()}
+<div className='header'> 
+<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" srcset=""/></div>
+</div>
+         
+       
+    
 
         {this.renderContent()}
 
