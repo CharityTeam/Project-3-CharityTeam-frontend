@@ -163,7 +163,7 @@ class App extends Component {
     return (
       <div className="App">
       <div className="nav">
-      <img src="http://www.accessrecordsmanagement.co.uk/wp-content/uploads/2016/11/Records-Management-Website-Headers-17.jpg" alt="" srcset=""/>
+      <img src="http://www.accessrecordsmanagement.co.uk/wp-content/uploads/2016/11/Records-Management-Website-Headers-17.jpg" alt=""/>
       </div>
       <header>My Cases</header>     
       {this.state.activeCase ?  <OneCase 
