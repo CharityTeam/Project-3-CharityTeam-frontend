@@ -41,7 +41,7 @@ class CaseForm extends Component {
         return (
             <div className='modal'>
                 <form className='show-form' onSubmit={this.handleSubmit.bind(this)}>
-                    <div className='close-modal' onClick={() => { this.props.toggleModal() }}>X</div>
+                    <div className='close-modal' onClick={() => { this.props.toggleModal() }}>Cancel</div>
                     <label>name:</label><input type="text" value={this.state.name} name="name" onChange={this.handleChange.bind(this)} /><br />
                     <label>details</label><input type="text" value={this.state.details} name="details" onChange={this.handleChange.bind(this)} /><br />
                     <label>city:</label><input type="text" value={this.state.city} name="city" onChange={this.handleChange.bind(this)} /><br />

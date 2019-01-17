@@ -166,7 +166,7 @@ class App extends Component {
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
-                ur website name
+                Takamul
               </Navbar.Brand>
             </Navbar.Header>
             <Nav>
@@ -188,8 +188,10 @@ class App extends Component {
           </Navbar>
 
 
-
-          <img src="http://www.accessrecordsmanagement.co.uk/wp-content/uploads/2016/11/Records-Management-Website-Headers-17.jpg" alt=""  />
+<div className='header'> 
+<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" srcset=""/></div>
+</div>
+         
         </div>
     )
   }
@@ -219,7 +221,8 @@ class App extends Component {
       return(
         <div className="Cases">
         <div className="action-buttons">
-          <div onClick={this.toggleModal.bind(this)}>+</div>
+        <button  className='newCaseBut'onClick={this.toggleModal.bind(this)}>Add New Case</button>
+          {/* <div onClick={this.toggleModal.bind(this)}>Add New Case</div> */}
         </div>
         <div className="tiles">
           {this.renderTiles(this.state.cases)}
