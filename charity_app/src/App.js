@@ -3,7 +3,7 @@ import './App.css';
 import Tile from './components/Tiles';
 import OneCase from './components/OneCase';
 import CaseForm from './components/CaseForm';
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem, ProgressBar } from 'react-bootstrap';
 const API_URL = 'http://localhost:3000';
 
 class App extends Component {
@@ -152,13 +152,21 @@ class App extends Component {
   progressBar(total, sum) {
     const colorBackground = `${(sum / total) * 100}%`
     return {
+    // ( 
       backgroundColor: 'green',
       width: colorBackground,
+                
       height: '1vh',
       borderRadius: '5px'
-    }
-  }
+//       <div>
+//   <ProgressBar bsStyle="success" now={60} />
 
+// </div>
+  // )
+ }
+}
+  
+  
   renderHeader() {
     return(
       <div className="nav">
@@ -186,8 +194,10 @@ class App extends Component {
 
             </Nav>
           </Navbar>
-
-
+{/* testing */}
+ {/* <div>
+  <ProgressBar bsStyle="success" now={60} />
+</div> */}
 
           <img src="http://www.accessrecordsmanagement.co.uk/wp-content/uploads/2016/11/Records-Management-Website-Headers-17.jpg" alt=""  />
         </div>
@@ -231,8 +241,13 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="App">
-        
+        {/* it worked here */}
+        {/* <div>
+  <ProgressBar bsStyle="success" now={60} />
+</div> */}
+
         {this.renderHeader()}
 
         {this.renderContent()}

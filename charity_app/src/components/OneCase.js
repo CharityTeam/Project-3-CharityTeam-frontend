@@ -7,14 +7,12 @@ const OneCase = (props) => {
                 <div className="image">
                     <img src={props.activeCase.img} alt="" />
                 </div>
-                <div className="buttons">
-                    <button onClick={() => { props.toggleModal() }}>Edit</button>
-                    <button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</button>
-                </div>
-                <button className='backbut'
+                <div className="buttons"></div>
+                   
+                <Button className='backbut'
                     onClick={() => {
                         props.setCurrentCase(null);
-                    }}> BACK TO HOMEPAGE</button>
+                    }}> HOMEPAGE</Button>
                 <br></br>
                 {/* <div className="back"
                 onClick={() => {
@@ -35,10 +33,10 @@ const OneCase = (props) => {
                 <h2>Total Donation: {props.activeCase.sum}</h2>
 
                 <div className="buttons">
-                    <Button bsStyle="primary" onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</Button>
+                    <Button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</Button>
                     {/* <button onClick={() => { props.toggleModal() }}>Edit</button> */}
                     {/* <button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</button> */}
-                    <Button bsStyle="primary" onClick={() => { props.toggleModal() }}> Edit</Button>
+                    <Button onClick={() => { props.toggleModal() }}> Edit</Button>
                 </div>
             </div>
 

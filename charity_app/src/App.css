@@ -102,3 +102,7 @@ text-align: center;
   margin: 0 auto;
   padding-left: 40px
 }
+
+.progress{
+  width:90%;
+}
