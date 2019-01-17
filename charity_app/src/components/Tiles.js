@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 
 const Tile = (props) => {
