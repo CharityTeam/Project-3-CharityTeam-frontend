@@ -6,6 +6,10 @@
 
 }
 
+.modal {
+  display: flex;
+}
+
 img{
  
   width: 200px;
