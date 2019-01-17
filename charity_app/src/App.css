@@ -1,4 +1,4 @@
- .App {
+.App {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -105,4 +105,13 @@ text-align: center;
 
 .progress{
   width:90%;
+}
+#numberText{
+  margin-bottom: 10px;
+  
+
+}
+
+#numberText{
+  margin-bottom: 10px;
 }

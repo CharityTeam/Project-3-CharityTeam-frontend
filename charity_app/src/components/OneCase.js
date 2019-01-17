@@ -34,8 +34,6 @@ const OneCase = (props) => {
 
                 <div className="buttons">
                     <Button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</Button>
-                    {/* <button onClick={() => { props.toggleModal() }}>Edit</button> */}
-                    {/* <button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</button> */}
                     <Button onClick={() => { props.toggleModal() }}> Edit</Button>
                 </div>
             </div>

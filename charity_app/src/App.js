@@ -3,6 +3,7 @@ import './App.css';
 import Tile from './components/Tiles';
 import OneCase from './components/OneCase';
 import CaseForm from './components/CaseForm';
+import PaypalExpressBtn from "react-paypal-express-checkout";
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem, ProgressBar } from 'react-bootstrap';
 const API_URL = 'http://localhost:3000';
 
@@ -12,8 +13,23 @@ class App extends Component {
     this.state = {
       cases: [],
       activeCase: null,
-      modal: false
+      modal: false,
+      env: "sandbox",
+      currency: "USD",
+      total: 0,
+      client: {
+        sandbox:
+          "AaxwsLtvoeshM1WWXeEGIKxgC-XEfOEA6v-84D0buxfU1o95Sp3o9m1IdUr6mVyzTM3QqaVS4WRUnuIX",
+        production:
+          "EPSX6LMBi0_kGvU3nmGpTSJANL_QQ8fIj10ofOwnUpZHH16_vP8VGnqufdt3qm8t2wkf_ehCkF821tSc"
+      }
     }
+  }
+  onChange(e){
+    console.log(e.target.value);
+    const newValue = parseInt(e.target.value);
+   
+    this.setState({total: newValue});
   }
 
   fetchCases() {
@@ -28,6 +44,7 @@ class App extends Component {
     this.fetchCases();
   }
 
+  
   createNewCase(oneCase) {
 
     const url = API_URL + '/cases'
@@ -56,7 +73,6 @@ class App extends Component {
         console.log(error);
       })
   }
-
   updateCase(caseOne) {
 
     const url = API_URL + `/cases/${caseOne.id}`
@@ -120,7 +136,6 @@ class App extends Component {
       this.createNewCase(oneCase)
     }
   }
-
   setCurrentCase(oneCase) {
     console.log('setting Case');
     console.log(oneCase);
@@ -128,6 +143,7 @@ class App extends Component {
       activeCase: oneCase
     })
   }
+
 
   renderTiles(allCases) {
 
@@ -148,21 +164,16 @@ class App extends Component {
       modal: !this.state.modal
     })
   }
-
+ 
   progressBar(total, sum) {
     const colorBackground = `${(sum / total) * 100}%`
     return {
     // ( 
       backgroundColor: 'green',
-      width: colorBackground,
-                
+      width: colorBackground,      
       height: '1vh',
       borderRadius: '5px'
-//       <div>
-//   <ProgressBar bsStyle="success" now={60} />
 
-// </div>
-  // )
  }
 }
   
@@ -204,51 +215,63 @@ class App extends Component {
     )
   }
 
-  renderContent(){
-    if(this.state.activeCase){
-      switch (this.state.modal) {
-        case true:
-        return(<OneCase
-          setCurrentCase={this.setCurrentCase.bind(this)}
-          activeCase={this.state.activeCase}
-          deleteCase={this.deleteCase.bind(this)}
-          toggleModal={this.toggleModal.bind(this)}
-          />  );
-          
-      
-        default:
-        return(<OneCase
-          setCurrentCase={this.setCurrentCase.bind(this)}
-          activeCase={this.state.activeCase}
-          deleteCase={this.deleteCase.bind(this)}
-          toggleModal={this.toggleModal.bind(this)}
-        />  );
-      }
-      
-    } else{
-      return(
+  renderContent() {
+
+    if (this.state.activeCase) {
+      return (<OneCase
+        setCurrentCase={this.setCurrentCase.bind(this)}
+        activeCase={this.state.activeCase}
+        deleteCase={this.deleteCase.bind(this)}
+        toggleModal={this.toggleModal.bind(this)}
+      />
+      )
+    } else {
+      return (
         <div className="Cases">
-        <div className="action-buttons">
-          <div onClick={this.toggleModal.bind(this)}>+</div>
+          <div className="action-buttons">
+            <div onClick={this.toggleModal.bind(this)}>+</div>
+          </div>
+          <div className="tiles">
+            {this.renderTiles(this.state.cases)}
+          </div>
         </div>
-        <div className="tiles">
-          {this.renderTiles(this.state.cases)}
-        </div>
-      </div>
       )
     }
+
+
+
+  }
+
+  paypayButton() {
+    const onSuccess = payment => {
+      console.log("The payment was succeeded!", payment);
+    };
+
+    const onCancel = data => {
+      console.log("The payment was cancelled!", data);
+    };
+
+    const onError = err => {
+      console.log("Error!", err);
+    };
+
+    return   <PaypalExpressBtn
+    env={this.state.env}
+    client={this.state.client}
+    currency={this.state.currency}
+    total={this.state.total}
+    onError={onError}
+    onSuccess={onSuccess}
+    onCancel={onCancel} />
   }
 
   render() {
     return (
-
       <div className="App">
-        {/* it worked here */}
-        {/* <div>
-  <ProgressBar bsStyle="success" now={60} />
-</div> */}
-
-        {this.renderHeader()}
+        <div className="nav">
+          <img src="http://www.accessrecordsmanagement.co.uk/wp-content/uploads/2016/11/Records-Management-Website-Headers-17.jpg" alt="" />
+        </div>
+        <header>My Cases</header>
 
         {this.renderContent()}
 
@@ -258,8 +281,8 @@ class App extends Component {
             toggleModal={this.toggleModal.bind(this)}
             activeCase={this.state.activeCase}
           /> : ''}
+        
       </div>
-
     );
   }
 }
