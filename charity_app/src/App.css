@@ -5,7 +5,9 @@
   
 
 }
-
+.modal{
+  display: flex;
+}
 img{
  
   width: 200px;
@@ -96,4 +98,8 @@ text-align: center;
 .oneCase img{
   margin: 0 auto;
   padding-left: 40px
+}
+#numberText{
+  margin-bottom: 10px;
+  
 }
