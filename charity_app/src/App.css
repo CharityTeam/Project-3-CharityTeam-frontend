@@ -38,6 +38,7 @@
 
 .tile img{
   height: 150px;
+  padding-top: 10px;
 }
 
 .groupTiles{
@@ -86,40 +87,35 @@ text-align: center;
     border-radius: 5px;
   }
 
-.container1{
- y */
-}
-
-.tile img{
-  margin-top: 20px;
-}
 
 .oneCase{
  display: flex;
  flex-direction: row;
- padding-top: 20px;
+
+ padding-top: 0px;
   border: solid rgb(205, 216, 205);
   border-radius: 5%;
   width: 800px;
-  height: 60%;
   margin: 0 auto;
   background-color: rgb(205, 216, 205)
 
 }
-/* .nav img {
+
+.merg{
+  margin-top: 10px;
+
+}
+.backbut{
  
-} */
+}
+
 
 .oneCase h2{
-  padding-left: 150px;
+  padding-left: 20px;
   text-align: left;
 
 }
 
-.oneCase img{
-  margin: 0 auto;
-  padding-left: 40px
-}
 
 
 
@@ -135,4 +131,23 @@ text-align: center;
 .imgHedear {
 float: right;
 padding-right: 30px;
+}
+
+.rightside {
+  width: 400px;
+
+}
+.leftside {
+  width: 400px;
+  margin: 0% auto
+}
+
+.image img{
+width: 400px;
+padding-top: 25px;
+padding-left: 20px
+
+
+
+  
 }

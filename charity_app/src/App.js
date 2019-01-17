@@ -3,7 +3,8 @@ import './App.css';
 import Tile from './components/Tiles';
 import OneCase from './components/OneCase';
 import CaseForm from './components/CaseForm';
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import PaypalExpressBtn from "react-paypal-express-checkout";
+import {  Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 const API_URL = 'http://localhost:3000';
 
 class App extends Component {
@@ -12,8 +13,26 @@ class App extends Component {
     this.state = {
       cases: [],
       activeCase: null,
-      modal: false
+      modal: false,
+      env: "sandbox",
+      currency: "USD",
+      total: 0,
+      client: {
+        sandbox:
+          "AaxwsLtvoeshM1WWXeEGIKxgC-XEfOEA6v-84D0buxfU1o95Sp3o9m1IdUr6mVyzTM3QqaVS4WRUnuIX",
+        production:
+          "EPSX6LMBi0_kGvU3nmGpTSJANL_QQ8fIj10ofOwnUpZHH16_vP8VGnqufdt3qm8t2wkf_ehCkF821tSc"
+      }
     }
+  }
+
+
+
+  onChange(e){
+    console.log(e.target.value);
+    const newValue = parseInt(e.target.value);
+   
+    this.setState({total: newValue});
   }
 
   fetchCases() {
@@ -137,7 +156,9 @@ class App extends Component {
         <Tile key={oneCase.id}
           case={oneCase}
           setCurrentCase={this.setCurrentCase.bind(this)}
-          progressBar={this.progressBar.bind(this)} />
+          progressBar={this.progressBar.bind(this)} 
+          onChange ={this.onChange.bind(this)}
+          paypayButton ={this.paypayButton.bind(this)}/>
 
       )
     })
@@ -154,7 +175,7 @@ class App extends Component {
     return {
       backgroundColor: 'green',
       width: colorBackground,
-      height: '1vh',
+      height: '0.9vh',
       borderRadius: '5px'
     }
   }
@@ -186,57 +207,74 @@ class App extends Component {
 
             </Nav>
           </Navbar>
-
-
-<div className='header'> 
-<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" srcset=""/></div>
-</div>
-         
-        </div>
+          
+    </div>
     )
   }
+  
 
-  renderContent(){
-    if(this.state.activeCase){
-      switch (this.state.modal) {
-        case true:
-        return(<OneCase
-          setCurrentCase={this.setCurrentCase.bind(this)}
-          activeCase={this.state.activeCase}
-          deleteCase={this.deleteCase.bind(this)}
-          toggleModal={this.toggleModal.bind(this)}
-          />  );
-          
-      
-        default:
-        return(<OneCase
-          setCurrentCase={this.setCurrentCase.bind(this)}
-          activeCase={this.state.activeCase}
-          deleteCase={this.deleteCase.bind(this)}
-          toggleModal={this.toggleModal.bind(this)}
-        />  );
-      }
-      
-    } else{
-      return(
+  renderContent() {
+
+    if (this.state.activeCase) {
+      return (<OneCase
+        setCurrentCase={this.setCurrentCase.bind(this)}
+        activeCase={this.state.activeCase}
+        deleteCase={this.deleteCase.bind(this)}
+        toggleModal={this.toggleModal.bind(this)}
+      />
+      )
+    } else {
+      return (
         <div className="Cases">
-        <div className="action-buttons">
+            <div className="action-buttons">
         <button  className='newCaseBut'onClick={this.toggleModal.bind(this)}>Add New Case</button>
           {/* <div onClick={this.toggleModal.bind(this)}>Add New Case</div> */}
         </div>
-        <div className="tiles">
-          {this.renderTiles(this.state.cases)}
+          <div className="tiles">
+            {this.renderTiles(this.state.cases)}
+          </div>
         </div>
-      </div>
       )
     }
+
+
+
+  }
+
+  paypayButton() {
+    const onSuccess = payment => {
+      console.log("The payment was succeeded!", payment);
+    };
+
+    const onCancel = data => {
+      console.log("The payment was cancelled!", data);
+    };
+
+    const onError = err => {
+      console.log("Error!", err);
+    };
+
+    return   <PaypalExpressBtn
+    env={this.state.env}
+    client={this.state.client}
+    currency={this.state.currency}
+    total={this.state.total}
+    onError={onError}
+    onSuccess={onSuccess}
+    onCancel={onCancel} />
   }
 
   render() {
     return (
+    
       <div className="App">
-        
-        {this.renderHeader()}
+       {this.renderHeader()}
+<div className='header'> 
+<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" srcset=""/></div>
+</div>
+         
+       
+    
 
         {this.renderContent()}
 
@@ -246,8 +284,8 @@ class App extends Component {
             toggleModal={this.toggleModal.bind(this)}
             activeCase={this.state.activeCase}
           /> : ''}
+        
       </div>
-
     );
   }
 }
