@@ -7,10 +7,7 @@ const OneCase = (props) => {
                 <div className="image">
                     <img src={props.activeCase.img} alt="" />
                 </div>
-                <div className="buttons">
-                    <button onClick={() => { props.toggleModal() }}>Edit</button>
-                    <button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</button>
-                </div>
+                
                 <button className='backbut'
                     onClick={() => {
                         props.setCurrentCase(null);

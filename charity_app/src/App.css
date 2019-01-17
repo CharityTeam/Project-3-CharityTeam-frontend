@@ -5,11 +5,9 @@
   
 
 }
-
-.modal {
+.modal{
   display: flex;
 }
-
 img{
  
   width: 200px;
@@ -91,7 +89,6 @@ text-align: center;
   width:100%;
  opacity: 0.2;
 }
-
 .oneCase h2{
   padding-left: 150px;
   text-align: left;
@@ -101,4 +98,8 @@ text-align: center;
 .oneCase img{
   margin: 0 auto;
   padding-left: 40px
+}
+#numberText{
+  margin-bottom: 10px;
+  
 }

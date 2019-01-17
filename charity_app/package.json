@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "paypal-rest-sdk": "^1.8.1",
     "react": "^16.7.0",
-    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
+    "react-paypal-express-checkout": "^1.0.5",
     "react-scripts": "2.1.3"
   },
   "scripts": {
