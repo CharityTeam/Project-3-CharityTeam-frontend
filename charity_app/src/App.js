@@ -4,7 +4,11 @@ import Tile from './components/Tiles';
 import OneCase from './components/OneCase';
 import CaseForm from './components/CaseForm';
 import PaypalExpressBtn from "react-paypal-express-checkout";
+<<<<<<< HEAD
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem, ProgressBar } from 'react-bootstrap';
+=======
+import {  Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
 const API_URL = 'http://localhost:3000';
 
 class App extends Component {
@@ -25,6 +29,12 @@ class App extends Component {
       }
     }
   }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
   onChange(e){
     console.log(e.target.value);
     const newValue = parseInt(e.target.value);
@@ -44,7 +54,10 @@ class App extends Component {
     this.fetchCases();
   }
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
   createNewCase(oneCase) {
 
     const url = API_URL + '/cases'
@@ -73,6 +86,10 @@ class App extends Component {
         console.log(error);
       })
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
   updateCase(caseOne) {
 
     const url = API_URL + `/cases/${caseOne.id}`
@@ -136,6 +153,10 @@ class App extends Component {
       this.createNewCase(oneCase)
     }
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
   setCurrentCase(oneCase) {
     console.log('setting Case');
     console.log(oneCase);
@@ -144,7 +165,10 @@ class App extends Component {
     })
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
   renderTiles(allCases) {
 
     return allCases.map((oneCase, index) => {
@@ -153,7 +177,13 @@ class App extends Component {
         <Tile key={oneCase.id}
           case={oneCase}
           setCurrentCase={this.setCurrentCase.bind(this)}
+<<<<<<< HEAD
           progressBar={this.progressBar.bind(this)} />
+=======
+          progressBar={this.progressBar.bind(this)} 
+          onChange ={this.onChange.bind(this)}
+          paypayButton ={this.paypayButton.bind(this)}/>
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
 
       )
     })
@@ -164,6 +194,7 @@ class App extends Component {
       modal: !this.state.modal
     })
   }
+<<<<<<< HEAD
  
   progressBar(total, sum) {
     const colorBackground = `${(sum / total) * 100}%`
@@ -178,6 +209,19 @@ class App extends Component {
 }
   
   
+=======
+
+  progressBar(total, sum) {
+    const colorBackground = `${(sum / total) * 100}%`
+    return {
+      backgroundColor: 'green',
+      width: colorBackground,
+      height: '0.9vh',
+      borderRadius: '5px'
+    }
+  }
+
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
   renderHeader() {
     return(
       <div className="nav">
@@ -185,7 +229,11 @@ class App extends Component {
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
+<<<<<<< HEAD
                 ur website name
+=======
+                Takamul
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
               </Navbar.Brand>
             </Navbar.Header>
             <Nav>
@@ -205,6 +253,7 @@ class App extends Component {
 
             </Nav>
           </Navbar>
+<<<<<<< HEAD
 {/* testing */}
  {/* <div>
   <ProgressBar bsStyle="success" now={60} />
@@ -214,6 +263,13 @@ class App extends Component {
         </div>
     )
   }
+=======
+          
+    </div>
+    )
+  }
+  
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
 
   renderContent() {
 
@@ -228,9 +284,16 @@ class App extends Component {
     } else {
       return (
         <div className="Cases">
+<<<<<<< HEAD
           <div className="action-buttons">
             <div onClick={this.toggleModal.bind(this)}>+</div>
           </div>
+=======
+            <div className="action-buttons">
+        <button  className='newCaseBut'onClick={this.toggleModal.bind(this)}>Add New Case</button>
+          {/* <div onClick={this.toggleModal.bind(this)}>Add New Case</div> */}
+        </div>
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
           <div className="tiles">
             {this.renderTiles(this.state.cases)}
           </div>
@@ -267,11 +330,23 @@ class App extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div className="App">
         <div className="nav">
           <img src="http://www.accessrecordsmanagement.co.uk/wp-content/uploads/2016/11/Records-Management-Website-Headers-17.jpg" alt="" />
         </div>
         <header>My Cases</header>
+=======
+    
+      <div className="App">
+       {this.renderHeader()}
+<div className='header'> 
+<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" srcset=""/></div>
+</div>
+         
+       
+    
+>>>>>>> de1b3650c4cf775ff2af7fc3968caa5ee800b510
 
         {this.renderContent()}
 

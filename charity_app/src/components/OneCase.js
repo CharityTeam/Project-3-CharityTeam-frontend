@@ -3,16 +3,14 @@ import { Button } from 'react-bootstrap';
 const OneCase = (props) => {
     return (
         <div className="oneCase">
+        <div className="merg">
+       
             <div className="rightside">
                 <div className="image">
                     <img src={props.activeCase.img} alt="" />
                 </div>
-                <div className="buttons"></div>
-                   
-                <Button className='backbut'
-                    onClick={() => {
-                        props.setCurrentCase(null);
-                    }}> HOMEPAGE</Button>
+                
+                
                 <br></br>
                 {/* <div className="back"
                 onClick={() => {
@@ -21,7 +19,7 @@ const OneCase = (props) => {
             </div>
             <div className="leftside">
 
-                <h2>name: {props.activeCase.name}</h2>
+                <h2>Name: {props.activeCase.name}</h2>
                 <h2>Details: {props.activeCase.details}</h2>
                 <h2>City: {props.activeCase.city}</h2>
                 <h2>email: {props.activeCase.email}</h2>
@@ -32,16 +30,24 @@ const OneCase = (props) => {
                     props.activeCase.numberofdonors}</h2>
                 <h2>Total Donation: {props.activeCase.sum}</h2>
 
+                
                 <div className="buttons">
-                    <Button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</Button>
-                    <Button onClick={() => { props.toggleModal() }}> Edit</Button>
-                </div>
+                   <Button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</Button>
+                   <Button onClick={() => { props.toggleModal() }}> Edit</Button>
+               </div>
+               <br></br>
+                    <button className='backbut'
+                        onClick={() => {
+                            props.setCurrentCase(null);
+                        }}> BACK TO HOMEPAGE</button>
+                
             </div>
 
             {/* <div className="container1">
 
 
             </div> */}
+             </div>
         </div>
 
     );
