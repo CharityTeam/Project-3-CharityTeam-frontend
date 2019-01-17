@@ -10,6 +10,7 @@ const OneCase = (props) => {
                 <div className="buttons">
                     <button onClick={() => { props.toggleModal() }}>Edit</button>
                     <button onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</button>
+                    <Button bsStyle="primary" onClick={() => { props.deleteCase(props.activeCase.id) }}>Delete</Button>
                 </div>
 <button className='backbut'
     onClick={() => {
