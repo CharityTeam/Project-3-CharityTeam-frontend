@@ -29,6 +29,9 @@ const OneCase = (props) => {
                 <h2>Number of donors:{props.activeCase.sum === '0' ? props.activeCase.numberofdonors = 0 :
                     props.activeCase.numberofdonors}</h2>
                 <h2>Total Donation: {props.activeCase.sum}</h2>
+                <label>Help Us with: </label><input type="number" id="doner_donation" name="doner_donation" onChange={(e) => {props.onChange(e)}} min="5" max="1000"/>
+                {/*Here's  an example in the bottom to call the paypal method*/}
+                   <Button onClick={() => {props.createDonation(props.activeCase, props.total)}}>{props.paypayButton()}</Button> 
 
                 
                 <div className="buttons">

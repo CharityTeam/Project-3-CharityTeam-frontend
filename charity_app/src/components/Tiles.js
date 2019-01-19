@@ -14,7 +14,7 @@ const Tile = (props) => {
       <div className="payPal">
       <label>Help Us with: </label><input type="number" id="numberText" onChange={(e) => {props.onChange(e)}} min="5" max="100"/>
       {props.paypayButton()}
-      <button onClick={() => {props.setCurrentCase(props.case)}}>Details</button>
+      <Button onClick={() => {props.setCurrentCase(props.case)}}>Details</Button>
       </div>
       {/* <div className="progresBar">
         <div className="background" style= {props.progressBar(props.case.needed, props.case.sum)}>

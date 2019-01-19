@@ -75,6 +75,45 @@ class App extends Component {
         console.log(error);
       })
   }
+//Heres the function when I try to create i record in the donation table
+  createDonation(caseO, total){
+    const url = API_URL + `/cases/${caseO.id}`
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(total)
+    })
+    //It gives me an error here
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        caseO.sum += data.donation.doner_donation;
+        const updatedcases = this.state.cases.map(el => {
+          // if(el.id === data.id ){
+          //  return el.sum ? el : el.sum = caseOne.sum;
+          //  }else{
+          //    return data
+          //  }
+          return el.id === data.case_id ? el.sum +=data.doner_donation : el
+        })
+
+
+        console.log('current state: ', this.state.cases);
+        console.log('new state: ', updatedcases)
+
+        this.setState({
+          cases: updatedcases,
+          activeCase: caseO,
+          modal: false
+        })
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   updateCase(caseOne) {
 
     const url = API_URL + `/cases/${caseOne.id}`
@@ -221,6 +260,11 @@ class App extends Component {
         activeCase={this.state.activeCase}
         deleteCase={this.deleteCase.bind(this)}
         toggleModal={this.toggleModal.bind(this)}
+        onChange ={this.onChange.bind(this)}
+        paypayButton ={this.paypayButton.bind(this)}
+        createDonation={this.createDonation.bind(this)}
+        total={this.state.total}
+        
       />
       )
     } else {
@@ -242,7 +286,7 @@ class App extends Component {
 
 
   }
-
+//here where I call Paypall component
   paypayButton() {
     const onSuccess = payment => {
       console.log("The payment was succeeded!", payment);
@@ -255,15 +299,16 @@ class App extends Component {
     const onError = err => {
       console.log("Error!", err);
     };
-
-    return   <PaypalExpressBtn
-    env={this.state.env}
-    client={this.state.client}
-    currency={this.state.currency}
-    total={this.state.total}
-    onError={onError}
-    onSuccess={onSuccess}
-    onCancel={onCancel} />
+    return(   <PaypalExpressBtn
+      env={this.state.env}
+      client={this.state.client}
+      currency={this.state.currency}
+      total={this.state.total}
+      onError={onError}
+      onSuccess={onSuccess}
+      onCancel={onCancel} 
+      />
+    )
   }
 
   render() {
@@ -272,7 +317,7 @@ class App extends Component {
       <div className="App">
        {this.renderHeader()}
 <div className='header'> 
-<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" srcset=""/></div>
+<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" /></div>
 <h2>“ There is no exercise better for the heart than reaching down and lifting people up.”</h2>
 <h3> ― John Holmes</h3>
 </div>
