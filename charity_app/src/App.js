@@ -4,7 +4,8 @@ import Tile from './components/Tiles';
 import OneCase from './components/OneCase';
 import CaseForm from './components/CaseForm';
 import PaypalExpressBtn from "react-paypal-express-checkout";
-import {  Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
 const API_URL = 'http://localhost:3000';
 
 class App extends Component {
@@ -28,28 +29,28 @@ class App extends Component {
   }
 
 
-  quoteOfTheDay(){
+  quoteOfTheDay() {
     const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en'
     fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            this.setState({quote : data}, () => console.log(this.state.quote));
-            
-            //renderQuote(quoteAuthor);
-        })
-        .catch(error => {
-            console.log('QuoteError:', error);
-  
-        })
-      }
-    
-     
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ quote: data }, () => console.log(this.state.quote));
 
-  onChange(e){
+        //renderQuote(quoteAuthor);
+      })
+      .catch(error => {
+        console.log('QuoteError:', error);
+
+      })
+  }
+
+
+
+  onChange(e) {
     console.log(e.target.value);
     const newValue = parseInt(e.target.value);
-   
-    this.setState({total: newValue});
+
+    this.setState({ total: newValue });
   }
 
   fetchCases() {
@@ -93,6 +94,45 @@ class App extends Component {
         console.log(error);
       })
   }
+  //Heres the function when I try to create i record in the donation table
+  createDonation(caseO, donorDonation) {
+    const url = API_URL + `/cases/${caseO.id}`
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(donorDonation)
+    })
+      //It gives me an error here
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        caseO.sum = parseInt(caseO.sum) + data.doner_donation;
+        const updatedcases = this.state.cases.map(el => {
+          // if(el.id === data.id ){
+          //  return el.sum ? el : el.sum = caseOne.sum;
+          //  }else{
+          //    return data
+          //  }
+          return el.id === data.case_id ? caseO : el
+        })
+
+
+        console.log('current state: ', this.state.cases);
+        console.log('new state: ', updatedcases)
+
+        this.setState({
+          cases: updatedcases,
+          activeCase: caseO,
+          modal: false
+        })
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   updateCase(caseOne) {
 
     const url = API_URL + `/cases/${caseOne.id}`
@@ -173,9 +213,9 @@ class App extends Component {
         <Tile key={oneCase.id}
           case={oneCase}
           setCurrentCase={this.setCurrentCase.bind(this)}
-          progressBar={this.progressBar.bind(this)} 
-          onChange ={this.onChange.bind(this)}
-          paypayButton ={this.paypayButton.bind(this)}/>
+          progressBar={this.progressBar.bind(this)}
+          onChange={this.onChange.bind(this)}
+          paypayButton={this.paypayButton.bind(this)} />
 
       )
     })
@@ -198,43 +238,43 @@ class App extends Component {
   }
 
   renderHeader() {
-    return(
+    return (
       <div className="nav">
 
-    
 
-          <Navbar>
-            <Navbar.Header>
-              <Navbar.Brand>
-                Takamul 
+
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              Takamul
               </Navbar.Brand>
 
-            </Navbar.Header>
-            <Nav>
-              <NavItem eventKey={1} href="#">
-                About Us
+          </Navbar.Header>
+          <Nav>
+            <NavItem eventKey={1} href="#">
+              About Us
     </NavItem>
-              <NavDropdown eventKey={3} title="Organizations" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Insan</MenuItem>
-                <MenuItem eventKey={3.2}>Bunyan</MenuItem>
-                <MenuItem eventKey={3.3}>Takaful</MenuItem>
-                {/* <MenuItem divider /> */}
-                <MenuItem eventKey={3.4}>Zahra</MenuItem>
-              </NavDropdown>
-              <NavItem eventKey={2} href="#">
-                Contact us
+            <NavDropdown eventKey={3} title="Organizations" id="basic-nav-dropdown">
+              <MenuItem eventKey={3.1}>Insan</MenuItem>
+              <MenuItem eventKey={3.2}>Bunyan</MenuItem>
+              <MenuItem eventKey={3.3}>Takaful</MenuItem>
+              {/* <MenuItem divider /> */}
+              <MenuItem eventKey={3.4}>Zahra</MenuItem>
+            </NavDropdown>
+            <NavItem eventKey={2} href="#">
+              Contact us
     </NavItem>
 
-            </Nav>
-          </Navbar>
+          </Nav>
+        </Navbar>
 
 
-          
-          
-    </div>
+
+
+      </div>
     )
   }
-  
+
 
   renderContent() {
 
@@ -244,19 +284,24 @@ class App extends Component {
         activeCase={this.state.activeCase}
         deleteCase={this.deleteCase.bind(this)}
         toggleModal={this.toggleModal.bind(this)}
+        onChange={this.onChange.bind(this)}
+        paypayButton={this.paypayButton.bind(this)}
+        createDonation={this.createDonation.bind(this)}
+        total={this.state.total}
+
       />
       )
     } else {
       return (
         <div className="Cases">
-            <div className="action-buttons">
-        <button  className='newCaseBut'onClick={this.toggleModal.bind(this)}> Add New Case   </button>
-          {/* <div onClick={this.toggleModal.bind(this)}>Add New Case</div> */}
-        </div>
+          <div className="action-buttons">
+            <button className='newCaseBut' onClick={this.toggleModal.bind(this)}> Add New Case   </button>
+            {/* <div onClick={this.toggleModal.bind(this)}>Add New Case</div> */}
+          </div>
           <div className="tiles">
             {this.renderTiles(this.state.cases)}
 
-            
+
           </div>
         </div>
       )
@@ -265,10 +310,14 @@ class App extends Component {
 
 
   }
-
-  paypayButton() {
+  //here where I call Paypall component
+  paypayButton(oneActiveCase, total) {
+    const donorDonation = {
+      doner_donation: total
+    }
     const onSuccess = payment => {
       console.log("The payment was succeeded!", payment);
+      this.createDonation(oneActiveCase, donorDonation);
     };
 
     const onCancel = data => {
@@ -278,38 +327,32 @@ class App extends Component {
     const onError = err => {
       console.log("Error!", err);
     };
-
-    return   <PaypalExpressBtn
-    env={this.state.env}
-    client={this.state.client}
-    currency={this.state.currency}
-    total={this.state.total}
-    onError={onError}
-    onSuccess={onSuccess}
-    onCancel={onCancel} />
+    return (<PaypalExpressBtn
+      env={this.state.env}
+      client={this.state.client}
+      currency={this.state.currency}
+      total={this.state.total}
+      onError={onError}
+      onSuccess={onSuccess}
+      onCancel={onCancel}
+    />
+    )
   }
 
   render() {
     return (
-    
+
       <div className="App">
-       {this.renderHeader()}
-<div className='header'> 
-<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" /></div>
+        {this.renderHeader()}
+        <div className='header'>
+          <div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" /></div>
 
-<div className ="quote"> 
-  <h2>{this.state.quote.quoteText}</h2>
-  <h5>-{this.state.quote.quoteAuthor}</h5>
+          <div className="quote">
+            <h2>{this.state.quote.quoteText}</h2>
+            <h5>- {this.state.quote.quoteAuthor}</h5>
 
-  </div>
-
-
-<div>  
-
-  
-</div>
-
-</div>
+          </div>
+        </div>
 
 
         {this.renderContent()}
@@ -320,7 +363,7 @@ class App extends Component {
             toggleModal={this.toggleModal.bind(this)}
             activeCase={this.state.activeCase}
           /> : ''}
-        
+
       </div>
     );
   }
@@ -330,6 +373,6 @@ class App extends Component {
 
 
 
-  
+
 
 export default App;
