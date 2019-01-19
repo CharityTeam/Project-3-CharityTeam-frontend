@@ -250,7 +250,7 @@ class App extends Component {
       return (
         <div className="Cases">
             <div className="action-buttons">
-        <button  className='newCaseBut'onClick={this.toggleModal.bind(this)}>Add New Case</button>
+        <button  className='newCaseBut'onClick={this.toggleModal.bind(this)}> Add New Case   </button>
           {/* <div onClick={this.toggleModal.bind(this)}>Add New Case</div> */}
         </div>
           <div className="tiles">
@@ -297,7 +297,7 @@ class App extends Component {
 
 <div className ="quote"> 
   <h2>{this.state.quote.quoteText}</h2>
-  <h5>{this.state.quote.quoteAuthor}</h5>
+  <h5>-{this.state.quote.quoteAuthor}</h5>
 
   </div>
 
