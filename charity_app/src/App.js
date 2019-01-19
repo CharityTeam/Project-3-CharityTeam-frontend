@@ -5,6 +5,7 @@ import OneCase from './components/OneCase';
 import CaseForm from './components/CaseForm';
 import PaypalExpressBtn from "react-paypal-express-checkout";
 import {  Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
 const API_URL = 'http://localhost:3000';
 
 class App extends Component {
@@ -76,27 +77,27 @@ class App extends Component {
       })
   }
 //Heres the function when I try to create i record in the donation table
-  createDonation(caseO, total){
+  createDonation(caseO, donorDonation){
     const url = API_URL + `/cases/${caseO.id}`
     fetch(url, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(total)
+      body: JSON.stringify(donorDonation)
     })
     //It gives me an error here
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        caseO.sum += data.donation.doner_donation;
+        caseO.sum =  parseInt(caseO.sum) + data.doner_donation;
         const updatedcases = this.state.cases.map(el => {
           // if(el.id === data.id ){
           //  return el.sum ? el : el.sum = caseOne.sum;
           //  }else{
           //    return data
           //  }
-          return el.id === data.case_id ? el.sum +=data.doner_donation : el
+          return el.id === data.case_id ? caseO : el
         })
 
 
@@ -287,9 +288,13 @@ class App extends Component {
 
   }
 //here where I call Paypall component
-  paypayButton() {
-    const onSuccess = payment => {
+  paypayButton(oneActiveCase, total) {
+    const donorDonation = {
+      doner_donation: total
+    }
+     const onSuccess = payment => {
       console.log("The payment was succeeded!", payment);
+      this.createDonation(oneActiveCase, donorDonation);
     };
 
     const onCancel = data => {
