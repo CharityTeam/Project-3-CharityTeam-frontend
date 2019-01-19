@@ -24,11 +24,15 @@
 .modal {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0,0,0,.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Times New Roman', Times, serif ;
+  font-size: 1em;
+ scroll-behavior: smooth;
+  
 
 }
 .header img {
@@ -95,24 +99,42 @@ text-align: center;
  padding-top: 0px;
   border: solid rgb(205, 216, 205);
   border-radius: 5%;
-  width: 800px;
+  width: 850px;
   margin: 0 auto;
   background-color: rgb(205, 216, 205)
 
 }
+body{
+
+  background-color: rgb(250, 250, 250);
+}
 
 .merg{
   margin-top: 10px;
+  
 
 }
 .backbut{
  
 }
+.oneCase{
 
+  margin-top: 20px;
+}
 
+.quote h2{
+
+  font-family: 'Times New Roman', Times, serif;
+  margin-right: 200px;
+  text-shadow: 1ex;
+font-size: 3em
+
+}
 .oneCase h2{
-  padding-left: 20px;
+  margin-left: 40px;
   text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
 }
 
@@ -134,20 +156,32 @@ padding-right: 30px;
 }
 
 .rightside {
-  width: 400px;
+
 
 }
 .leftside {
-  width: 400px;
-  margin: 0% auto
+
 }
 
 .image img{
 width: 400px;
-padding-top: 25px;
-padding-left: 20px
+margin-top: 25px;
+margin-left: 200px;
+border: solid rgb(190, 197, 199);
+border-radius: 10px;
 
 
 
   
 }
+
+.edit li {
+display:inherit;
+
+background-color: rgb(125, 152, 152)
+
+}
+li{
+
+}
+
