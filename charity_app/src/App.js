@@ -93,7 +93,6 @@ class App extends Component {
         console.log(error);
       })
   }
-
   updateCase(caseOne) {
 
     const url = API_URL + `/cases/${caseOne.id}`
@@ -207,8 +206,9 @@ class App extends Component {
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
-                Takamul
+                Takamul 
               </Navbar.Brand>
+
             </Navbar.Header>
             <Nav>
               <NavItem eventKey={1} href="#">
@@ -255,6 +255,8 @@ class App extends Component {
         </div>
           <div className="tiles">
             {this.renderTiles(this.state.cases)}
+
+            
           </div>
         </div>
       )
