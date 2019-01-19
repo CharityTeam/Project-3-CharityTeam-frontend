@@ -16,10 +16,10 @@ const Tile = (props) => {
       {props.paypayButton(props.case)}
       <Button onClick={() => {props.setCurrentCase(props.case)}}>Details</Button>
       </div>
-      {/* <div className="progresBar">
+       <div className="progresBar">
         <div className="background" style= {props.progressBar(props.case.needed, props.case.sum)}>
         </div>
-      </div> */}
+      </div> 
 
       <ProgressBar bsStyle="success" now={(props.case.sum / props.case.needed) * 100} />
 
