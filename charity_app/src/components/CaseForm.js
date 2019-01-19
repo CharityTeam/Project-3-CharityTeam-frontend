@@ -42,16 +42,16 @@ class CaseForm extends Component {
             <div className='modal'>
                 <form className='show-form' onSubmit={this.handleSubmit.bind(this)}>
                     <label>Name:</label><input type="text" value={this.state.name} name="name" onChange={this.handleChange.bind(this)} /><br />
-                    <label>Details</label><input type="text" value={this.state.details} name="details" onChange={this.handleChange.bind(this)} /><br />
-                    <label>City:</label><input type="text" value={this.state.city} name="city" onChange={this.handleChange.bind(this)} /><br />
-                    <label>e-mail:</label><input type="text" value={this.state.email} name="email" onChange={this.handleChange.bind(this)} /><br />
+                    <label>Details:</label><input type="text" value={this.state.details} name="details" onChange={this.handleChange.bind(this)} /><br />
+                    <label>City: </label><input type="text" value={this.state.city} name="city" onChange={this.handleChange.bind(this)} /><br />
+                    <label>E-mail:</label><input type="text" value={this.state.email} name="email" onChange={this.handleChange.bind(this)} /><br />
                     <label>Phone #:</label><input type="text" value={this.state.phone} name="phone" onChange={this.handleChange.bind(this)} /><br />
                     <label>Organaization:</label><input type="text" value={this.state.organtion_name} name="organtion_name" onChange={this.handleChange.bind(this)} /><br />
                     <label>needed:</label><input type="text" value={this.state.needed} name="needed" onChange={this.handleChange.bind(this)} /><br />
-                    <label>image:</label><input type="text" value={this.state.img} name="img" onChange={this.handleChange.bind(this)} /><br />
+                    <label>Image:</label><input type="text" value={this.state.img} name="img" onChange={this.handleChange.bind(this)} /><br />
                     <button className='close-modal' onClick={() => { this.props.toggleModal() }}>Cancel</button>
                     <br></br>
-                    <button>Submit</button>
+                    <button name="submit">Submit</button>
                 </form>
 
 

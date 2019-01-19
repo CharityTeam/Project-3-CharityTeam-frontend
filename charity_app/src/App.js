@@ -22,11 +22,28 @@ class App extends Component {
           "AaxwsLtvoeshM1WWXeEGIKxgC-XEfOEA6v-84D0buxfU1o95Sp3o9m1IdUr6mVyzTM3QqaVS4WRUnuIX",
         production:
           "EPSX6LMBi0_kGvU3nmGpTSJANL_QQ8fIj10ofOwnUpZHH16_vP8VGnqufdt3qm8t2wkf_ehCkF821tSc"
-      }
+      },
+      quote: {}
     }
   }
 
 
+  quoteOfTheDay(){
+    const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en'
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({quote : data}, () => console.log(this.state.quote));
+            
+            //renderQuote(quoteAuthor);
+        })
+        .catch(error => {
+            console.log('QuoteError:', error);
+  
+        })
+      }
+    
+     
 
   onChange(e){
     console.log(e.target.value);
@@ -45,6 +62,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchCases();
+    this.quoteOfTheDay();
   }
 
   createNewCase(oneCase) {
@@ -183,6 +201,8 @@ class App extends Component {
     return(
       <div className="nav">
 
+    
+
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
@@ -207,6 +227,9 @@ class App extends Component {
 
             </Nav>
           </Navbar>
+
+
+          
           
     </div>
     )
@@ -227,7 +250,7 @@ class App extends Component {
       return (
         <div className="Cases">
             <div className="action-buttons">
-        <button  className='newCaseBut'onClick={this.toggleModal.bind(this)}>Add New Case</button>
+        <button  className='newCaseBut'onClick={this.toggleModal.bind(this)}> Add New Case   </button>
           {/* <div onClick={this.toggleModal.bind(this)}>Add New Case</div> */}
         </div>
           <div className="tiles">
@@ -272,13 +295,22 @@ class App extends Component {
       <div className="App">
        {this.renderHeader()}
 <div className='header'> 
-<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" srcset=""/></div>
-<h2>“ There is no exercise better for the heart than reaching down and lifting people up.”</h2>
-<h3> ― John Holmes</h3>
+<div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" /></div>
+
+<div className ="quote"> 
+  <h2>{this.state.quote.quoteText}</h2>
+  <h5>-{this.state.quote.quoteAuthor}</h5>
+
+  </div>
+
+
+<div>  
+
+  
 </div>
-         
-       
-    
+
+</div>
+
 
         {this.renderContent()}
 
@@ -293,5 +325,11 @@ class App extends Component {
     );
   }
 }
+
+
+
+
+
+  
 
 export default App;

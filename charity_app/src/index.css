@@ -18,8 +18,10 @@ code {
   height: 60px;
   border: 1px solid black;
 } */
-container{
+.container{
+
   display: flex; 
   text-align: center;
+  
   /* box-flex:  */
 }
