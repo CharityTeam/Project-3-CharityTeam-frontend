@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { Button, ProgressBar } from 'react-bootstrap';
+
+
 const Tile = (props) => {
   return(
     <div className="tile">
@@ -13,10 +16,14 @@ const Tile = (props) => {
       {props.paypayButton()}
       <button onClick={() => {props.setCurrentCase(props.case)}}>Details</button>
       </div>
-      <div className="progresBar">
+      {/* <div className="progresBar">
         <div className="background" style= {props.progressBar(props.case.needed, props.case.sum)}>
         </div>
-      </div>
+      </div> */}
+
+      <ProgressBar bsStyle="success" now={(props.case.sum / props.case.needed) * 100} />
+
+      
     </div>
   )
 }

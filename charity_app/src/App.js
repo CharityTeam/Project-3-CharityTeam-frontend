@@ -75,7 +75,6 @@ class App extends Component {
         console.log(error);
       })
   }
-
   updateCase(caseOne) {
 
     const url = API_URL + `/cases/${caseOne.id}`
@@ -187,8 +186,9 @@ class App extends Component {
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
-                Takamul
+                Takamul 
               </Navbar.Brand>
+
             </Navbar.Header>
             <Nav>
               <NavItem eventKey={1} href="#">
@@ -232,6 +232,8 @@ class App extends Component {
         </div>
           <div className="tiles">
             {this.renderTiles(this.state.cases)}
+
+            
           </div>
         </div>
       )
@@ -271,6 +273,8 @@ class App extends Component {
        {this.renderHeader()}
 <div className='header'> 
 <div className="imgHedear"><img src="https://i.imgur.com/yYihB7L.png" alt="" srcset=""/></div>
+<h2>“ There is no exercise better for the heart than reaching down and lifting people up.”</h2>
+<h3> ― John Holmes</h3>
 </div>
          
        
