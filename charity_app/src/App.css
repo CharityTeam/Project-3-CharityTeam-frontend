@@ -16,7 +16,7 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
   width: 400px;
  
 
@@ -25,14 +25,14 @@
 .modal {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0,0,0,.5);
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Times New Roman', Times, serif ;
   font-size: 1em;
- /* scroll-behavior: smooth; */
+ scroll-behavior: smooth;
   
 
 }
@@ -97,13 +97,13 @@ text-align: center;
 .oneCase{
  display: flex;
  flex-direction: row;
+
  padding-top: 0px;
   border: solid rgb(205, 216, 205);
   border-radius: 5%;
   width: 850px;
   margin: 0 auto;
-  background-color: rgb(205, 216, 205);
-  margin-top: 30px;
+  background-color: rgb(205, 216, 205)
 
 }
 body{
@@ -116,12 +116,13 @@ body{
   
 
 }
-/* .backbut{
+
  
-}
+
 .oneCase{
 
   margin-top: 20px;
+ 
 }
 
 .quote h2{
@@ -130,12 +131,12 @@ body{
   /* margin-right: 200px;
  padding-top: 20px;
 font-size: 2em;
-width: 600px; 
-color:hsl(4, 29%, 31%);
+width: 600px; */
+color:#030303;
 text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
 
 
-}*/
+}
 .oneCase h2{
   margin-left: 40px;
   text-align: left;
@@ -147,8 +148,7 @@ text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
 
 .qnav{
   width: 100%;
-  background-color: rgba(169, 181, 169, 0.9);
-  ;
+  background-color: aliceblue;
 
   
 
@@ -170,32 +170,32 @@ float: right;
 padding-right: 30px;
 }
 
-.rightside {
-  width: 400px;
-}
-.leftside {
 
-}
 
 .image img{
 width: 400px;
 margin-top: 25px;
-margin-left: 200px;
+
 border: solid rgb(190, 197, 199);
 border-radius: 10px;
 
 
+
   
+}
+.merg{
+
+margin:0 auto;
+padding-bottom: 35px;
+
 }
 
 .edit li {
 display:inherit;
 
-background-color: rgb(168, 174, 174)
+background-color: rgb(125, 152, 152);
+
 
 }
 
-.quote {
-  color: rgb(255, 255, 255);
 
-}

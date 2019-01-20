@@ -5,7 +5,7 @@ const OneCase = (props) => {
         <div className="oneCase">
         <div className="merg">
        
-            <div className="rightside">
+           
                 <div className="image">
                     <img src={props.activeCase.img} alt="" />
                 </div>
@@ -16,20 +16,19 @@ const OneCase = (props) => {
                 onClick={() => {
                     props.setCurrentCase(null);
                 }}> BACK TO HOMEPAGE</div> */}
-            </div>
-            <div className="leftside">
+          
 <ul className="edit">
    
     <li> <h2><b> Name: </b>{props.activeCase.name} </h2> </li>
-    <li> <h2><b>Details:</b> {props.activeCase.details}</h2> </li>
-    <li>  <h2><b>City:</b>{props.activeCase.city} </h2> </li>
-    <li>  <h2><b>E-mail:</b> {props.activeCase.email}</h2> </li>
-    <li>  <h2><b> Phone: </b>{props.activeCase.phone}</h2>  </li>
-    <li>  <h2> <b> Organization Name:</b>{props.activeCase.organtion_name}</h2> </li>
-    <li>  <h2> <b>Needed: </b>{props.activeCase.needed}</h2> </li>
-    <li>  <h2> <b>Number of donors:</b>{props.activeCase.sum === '0' ? props.activeCase.numberofdonors = 0 :
+    <li> <h2><b>Details: </b> {props.activeCase.details}</h2> </li>
+    <li>  <h2><b>City: </b>{props.activeCase.city} </h2> </li>
+    <li>  <h2><b>E-mail: </b> {props.activeCase.email}</h2> </li>
+    <li>  <h2><b> Phone: </b> {props.activeCase.phone}</h2>  </li>
+    <li>  <h2> <b> Organization Name: </b> { props.activeCase.organtion_name}</h2> </li>
+    <li>  <h2> <b>Needed: </b> {props.activeCase.needed}</h2> </li>
+    <li>  <h2> <b>Number of donors: </b> {props.activeCase.sum === '0' ? props.activeCase.numberofdonors = 0 :
                     props.activeCase.numberofdonors} </h2> </li>
-               <li> <h2><b>Total Donation:</b> {props.activeCase.sum} </h2> </li>
+               <li> <h2><b>Total Donation: </b> {props.activeCase.sum} </h2> </li>
 
                 </ul>
                 <div className="buttons">
@@ -42,7 +41,7 @@ const OneCase = (props) => {
                             props.setCurrentCase(null);
                         }}> <img src="https://img.icons8.com/cotton/64/000000/home.png" alt=""></img> Back to Homepage</button>
                 
-            </div>
+         
 
             {/* <div className="container1">
 
