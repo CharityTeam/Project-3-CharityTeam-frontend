@@ -6,7 +6,7 @@ import CaseForm from './components/CaseForm';
 import PaypalExpressBtn from "react-paypal-express-checkout";
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://lit-lake-11896.herokuapp.com';
 
 class App extends Component {
   constructor() {
